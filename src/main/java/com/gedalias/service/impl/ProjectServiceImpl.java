@@ -28,4 +28,9 @@ public class ProjectServiceImpl implements ProjectService {
     public List<ProjectDTO> all() {
         return projectPort.all();
     }
+
+    @Override
+    public void delete(Long id) {
+        projectPort.delete(id);
+    }
 }

@@ -25,4 +25,9 @@ public class ProjectLocalServiceImpl implements ProjectService {
     public List<ProjectDTO> all() {
         return projects;
     }
+
+    @Override
+    public void delete(Long id) {
+        projects.remove(id);
+    }
 }

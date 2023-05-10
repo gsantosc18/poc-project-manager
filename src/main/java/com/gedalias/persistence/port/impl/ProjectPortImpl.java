@@ -1,6 +1,7 @@
 package com.gedalias.persistence.port.impl;
 
 import com.gedalias.dto.ProjectDTO;
+import com.gedalias.exception.ProjectNotFoundException;
 import com.gedalias.persistence.entity.ProjectEntity;
 import com.gedalias.persistence.mapper.ProjectMapper;
 import com.gedalias.persistence.port.ProjectPort;
@@ -25,5 +26,12 @@ public class ProjectPortImpl implements ProjectPort {
                 .stream()
                 .map(p -> ProjectMapper.toDTO((ProjectEntity) p))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void delete(Long id) {
+        if(!ProjectEntity.deleteById(id)) {
+            throw new ProjectNotFoundException();
+        }
     }
 }
